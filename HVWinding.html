@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="Home.css">
+  <script src="sidebar.js"></script>
+  <script src="setSessionID.js"></script>
+  <script src="MaterialData.js"></script>
+</head>
+
+<body>
+  <div include-html="sidebar.html"></div>
+  <div class="content">
+  <p id="session-id" style="color: blue;">Your session ID will appear here</p>
+
+<!--     
+  |----------------------------------------- H I G H   V O L T A G E   W I N D I N G   -----------------------------------------|
+     | Type of Coil......: Layer-Wound Coil    | Coil-Length.......:          316.000 mm | Cond Mec/Elec Lgth:  280.800 /  279.276 |
+     | Conductor.........:    CU-Round         | Inside Dimensions.:   184.814 x 242.546 | Cond-Dim Per Turn.:  1x1x 1.400 x 1.400 |
+     | Turns Tot./Nominal:      3429/   3266   | Outside Dimensions:   250.641 x 308.373 | Cond Area Per Turn:         1.53938 mm2 |
+     | Cooling Ducts Tk/#:    0.000 mm /  0.00 | Rad Blds (H,Leg,L): 32.91/ 32.91/ 32.91 | HV Conductor Wt...:           113.29 kg |
+     | Eff No Cool Ducts.: HV: 0 Leg: 0 LV: 0  | Add Rad Allowance.:            0.000 mm | Lay/Trn/Duc Wts...:  3.41/  0.00/  0.00 |
+     | Mean Turn Length..:            798.5 mm | Layer/Turn Ins Bd.:    0.200/  0.124 mm | Insulation Weight.:             3.41 kg |
+     | LayIns Tk.........: (18 Full)  0.200 mm | LayIns RB W/OvBld.:             3.06 mm | Average LayIns Tk.:    (Strip) 0.165 mm |
+     | CURRENT DENSITY...:        0.984 A/mm2  | # Sup Pts/Ax All..:      12 /  0.000 mm | Total Coil Weight.:           116.70 kg |
+     | # Lay: Max/Min tpl: 19# 183.00/135.00 * | Axial Sections....:       1             | Layer-Layer Volts.:           1234.3    |
+     | T-RISE/GRADIENT...:     22.2/ 6.0 deg C | Watts/sq m .......:        202.816      | Resistance (Coil).:  35.5077 @ 75 C     |
+     |                                         |                                         | Conductor Dims....: Standard Size       |
+-->
+
+      <label for="typeOfCoil">Type of Coil:</label>
+      <input type="text" id="typeOfCoil" name="typeOfCoil" value="Layer-Wound Coil"><br><br>
+
+      <label for="coilLength">Coil-Length:</label>
+      <input type="text" id="coilLength" name="coilLength" value="316.000 mm"><br><br>
+
+      <label for="condMecElecLgth">Cond Mec/Elec Lgth:</label>
+      <input type="text" id="condMecElecLgth" name="condMecElecLgth" value="280.800 / 279.276"><br><br>
+
+      <label for="conductor">Conductor:</label>
+      <input type="text" id="conductor" name="conductor" value="CU-Round"><br><br>
+
+      <label for="insideDimensions">Inside Dimensions:</label>
+      <input type="text" id="insideDimensions" name="insideDimensions" value="184.814 x 242.546"><br><br>
+
+      <label for="condDimPerTurn">Cond-Dim Per Turn:</label>
+      <input type="text" id="condDimPerTurn" name="condDimPerTurn" value="1x1x 1.400 x 1.400"><br><br>
+
+      <label for="turnsTotNominal">Turns Tot./Nominal:</label>
+      <input type="text" id="turnsTotNominal" name="turnsTotNominal" value="3429/ 3266"><br><br>
+
+      <label for="outsideDimensions">Outside Dimensions:</label>
+      <input type="text" id="outsideDimensions" name="outsideDimensions" value="250.641 x 308.373"><br><br>
+
+      <label for="condAreaPerTurn">Cond Area Per Turn:</label>
+      <input type="text" id="condAreaPerTurn" name="condAreaPerTurn" value="1.53938 mm2"><br><br>
+
+      <label for="coolingDuctsTk">Cooling Ducts Tk/#:</label>
+      <input type="text" id ="coolingDuctsTk" name="coolingDuctsTk" value="0.000 mm / 0.00"><br><br>
+
+      <label for="radBlds">Rad Blds (H,Leg,L):</label>
+      <input type="text" id="radBlds" name="radBlds" value="32.91/ 32.91/ 32.91"><br><br>
+
+      <label for="hvConductorWt">HV Conductor Wt:</label>
+      <input type="text" id="hvConductorWt" name="hvConductorWt" value="113.29 kg"><br><br>
+
+      <label for="effNoCoolDucts">Eff No Cool Ducts:</label>
+      <input type="text" id="effNoCoolDucts" name="effNoCoolDucts" value="HV: 0 Leg: 0 LV: 0"><br><br>
+
+      <label for="addRadAllowance">Add Rad Allowance:</label>
+      <input type="text" id="addRadAllowance" name="addRadAllowance" value="0.000 mm"><br><br>
+
+      <label for="layTrnDucWts">Lay/Trn/Duc Wts:</label>
+      <input type="text" id="layTrnDucWts" name="layTrnDucWts" value="3.41/ 0.00/ 0.00"><br><br>
+
+      <label for="meanTurnLength">Mean Turn Length:</label>
+      <input type="text" id="meanTurnLength" name="meanTurnLength" value="798.5 mm"><br><br>
+
+      <label for="layerTurnInsBd">Layer/Turn Ins Bd:</label>
+      <input type="text" id="layerTurnInsBd" name="layerTurnInsBd" value="0.200/ 0.124 mm"><br><br>
+
+      <label for="insulationWeight">Insulation Weight:</label>
+      <input type="text" id="insulationWeight" name="insulationWeight" value="3.41 kg"><br><br>
+
+      <label for="layInsTk">LayIns Tk:</label>
+      <input type="text" id="layInsTk" name="layInsTk" value="(18 Full) 0.200 mm"><br><br>
+
+      <label for="layInsRBWOvBld">LayIns RB W/OvBld:</label>
+      <input type="text" id="layInsRBWOvBld" name="layInsRBWOvBld" value="3.06 mm"><br><br>
+
+      <label for="averageLayInsTk">Average LayIns Tk:</label>
+      <input type="text" id="averageLayInsTk" name="averageLayInsTk" value="(Strip) 0.165 mm"><br><br>
+
+      <label for="currentDensity">CURRENT DENSITY:</label>
+      <input type="text" id="currentDensity" name="currentDensity" value="0.984 A/mm2"><br><br>
+
+      <label for="supPtsAxAll">Sup Pts/Ax All:</label>
+      <input type="text" id="supPtsAxAll" name="supPtsAxAll" value="12 / 0.000 mm"><br><br>
+
+      <label for="totalCoilWeight">Total Coil Weight:</label>
+      <input type="text" id="totalCoilWeight" name="totalCoilWeight" value="116.70 kg"><br><br>
+
+      <label for="layMaxMinTpl">Lay: Max/Min tpl:</label>
+      <input type="text" id="layMaxMinTpl" name="layMaxMinTpl" value="19# 183.00/135.00 *"><br><br>
+
+      <label for="axialSections">Axial Sections:</label>
+      <input type="text" id="axialSections" name="axialSections" value="1"><br><br>
+
+      <label for="layerLayerVolts">Layer-Layer Volts:</label>
+      <input type="text" id="layerLayerVolts" name="layerLayerVolts" value="1234.3"><br><br>
+
+      <label for="tRiseGradient">T-RISE/GRADIENT:</label>
+      <input type="text" id="tRiseGradient" name="tRiseGradient" value="22.2/ 6.0 deg C"><br><br>
+
+      <label for="wattsSqM">Watts/sq m:</label>
+      <input type="text" id="wattsSqM" name="wattsSqM" value="202.816"><br><br>
+
+      <label for="resistanceCoil">Resistance (Coil):</label>
+      <input type="text" id="resistanceCoil" name="resistanceCoil" value="35.5077 @ 75 C"><br><br>
+
+      <label for="conductorDims">Conductor Dims:</label>
+      <input type="text" id="conductorDims" name="conductorDims" value="Standard Size"><br><br>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+</html>

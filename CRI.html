@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="Home.css">
+  <script src="sidebar.js"></script>
+  <script src="downloadCSV.js"></script>
+  <script src="setSessionID.js"></script>
+</head>
+
+<body>
+  <div include-html="sidebar.html"></div>
+  <form id="userDataForm">
+    <div class="content">
+      <!-- Your main content goes here -->
+      <p id="session-id" style="color: blue;">Your session ID will appear here</p>
+
+      <div class="form-group">
+        <label for="contract">Customer:</label>
+        <input type="text" id="contract" name="contract" value=""><br>
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" value=""><br>
+        <label for="contractNumber">Contract Number:</label>
+        <input type="text" id="contractNumber" name="contractNumber" value="CT-"><br>
+      </div>
+
+      <div class="form-group">
+        <label for="powerRating">Power Rating (kVA):</label>
+        <input type="number" id="powerRating" name="powerRating" value=""><br>
+        <label for="voltage">Voltage (V):</label>
+        <input type="number" id="voltage" name="voltage" value=""><br>
+        <label for="frequency">Frequency (Hz):</label>
+        <input type="number" id="frequency" name="frequency" value=""><br>
+        <label for="phase">Phase:</label>
+        <select id="phase" name="phase">
+          <option value="1">1</option>
+          <option value="3">3</option>
+        </select><br>
+        <label for="insulation">Insulation:</label>
+        <select id="insulation" name="insulation">
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="H">H</option>
+        </select><br>
+        <label for="temperature">Temperature (°C):</label>
+        <input type="number" id="temperature" name="temperature" value=""><br>
+        <label for="cooling">Cooling:</label>
+        <select id="cooling" name="cooling">
+          <option value="ONAN">ONAN</option>
+        </select><br>
+        <label for="vectorGroup">Vector Group:</label>
+        <select id="vectorGroup" name="vectorGroup">
+          <option value="Dyn11">Dyn11</option>
+          <option value="Yyn0">Yyn0</option>
+          <option value="Yd1">Yd1</option>
+          <option value="Dd0">Dd0</option>
+      </div>
+      Update db button
+  </form>
+  </div>
+</body>
+
+</html>

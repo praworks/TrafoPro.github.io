@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="Home.css">
+    <script src="sidebar.js"></script>
+    <script src="setSessionID.js"></script>
+    <script src="MaterialData.js"></script>
+</head>
+<body>
+    <div include-html="sidebar.html"></div>
+    <div class="content">
+
+    <div class="form-group">
+      <p id="session-id" style="color: blue;">Your session ID will appear here</p>
+      <label for="coreMaterial">Select Core Material:</label>
+      <select id="coreMaterial" name="coreMaterial">
+        <option value="0" coreSheetThk="0.01">Calculate W/O specific material</option>
+        <option value="23" coreSheetThk="0.23">23</option>
+        <option value="27" coreSheetThk="0.27">27</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="stepCount">Select Steps Count:</label>
+      <select id="stepCount" onchange="updateStepOptions()">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <div id="stepOptions" class="form-group step-widths"></div>
+    <div class="form-group">
+      <label for="windingShape">Select Winding Shape:</label>
+      <select id="windingShape">
+        <option value="Round">Round</option>
+        <option value="Pill">Pill</option>
+        <option value="Oval">Oval</option>
+        <option value="Rectangle">Rectangle</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="centerToCenter">Center to Center (mm):</label>
+      <input type="number" id="centerToCenter" placeholder="Enter center to center distance">
+    </div>
+    <div class="form-group">
+      <label for="windowHeight">Window Height (mm):</label>
+      <input type="number" id="windowHeight" placeholder="Enter window height">
+    </div>
+
+
+    <div class="form-group">
+      <label for="coreRequiredArea">Core Required Area (mm²):</label>
+      <input type="text" id="coreRequiredArea" placeholder="Enter core required area">
+    </div>
+    <div class="form-group">
+      <label for="minGapCoreToLead">Min Gap From Core To Lead:</label>
+      <input type="text" id="minGapCoreToLead" placeholder="2" value="2">
+    </div>
+    <div class="form-group">
+      <label for="leadSize">Select Lead Size:</label>
+      <select id="leadSize">
+        <option value="25x3" lead_width="25" lead_thick="3">25x3</option>
+        <option value="25x4" lead_width="25" lead_thick="4">25x4</option>
+        <option value="40x4" lead_width="40" lead_thick="4">40x4</option>
+        <option value="50x6" lead_width="50" lead_thick="6">50x6</option>
+        <option value="120x10" lead_width="120" lead_thick="10">120x10</option>
+      </select>
+    </div>
+
+    <label for="leadSize">Select Lead Size:</label>
+    <select id="leadSize" onclick="listBusbarOptions()">
+      <option value="">Lead Size</option>
+    </select>
+
+    <script>
+      function listBusbarOptions() {
+        const materialSelect = document.getElementById('material');
+        materialSelect.innerHTML = '<option value="">Lead Size</option>';
+  
+        if (materialType && materialShape) {
+          MaterialData.forEach(material => {
+            if (material.type.includes(materialType) && material.type.includes(materialShape)) {
+              const option = document.createElement('option');
+              option.value = material.id;
+              option.textContent = `${material.id} - ${material.dimensions}`;
+              materialSelect.appendChild(option);
+            }
+          });
+        }
+      }
+    </script>
+
+    <button onclick="calculateThickness()">Calculate Thickness</button>
+    <div id="results"></div>
+
+    <img src="coreDwg.png" alt="">
+
+
+    <tbody id="calculationResults">
+
+    </tbody>
+    </table>
+  </div>
+
+  <script src="calculateThickness.js"></script>
+  <script src="updateStepOptions.js"></script>
+
+</body>
+
+</html>

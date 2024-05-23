@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    background-color: #77342a;
+    color: #fff;
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 20px;
+}
+
+.sidebar ul li {
+    padding: 5px;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    margin-left: 20%; /* Adjusted to match the width of the sidebar */
+    margin-right: 1%; /* Adjusted to match the width of the sidebar */
+    padding: 25px;
+}
+
+/* Additional styles for content */
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.step-widths {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.step-widths label {
+    flex: 0 0 50%;
+    margin-bottom: 5px;
+}
+
+#results {
+    margin-top: 20px;
+}
+
+img {
+    display: block;
+    margin-top: 20px;
+    max-width: 100%;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Adjusting the width for smaller screens */
+        height: auto;
+        position: relative;
+    }
+
+    .content {
+        margin-left: 0; /* Resetting the margin for smaller screens */
+    }
+
+    /* Additional styles for responsiveness */
+    .step-widths label {
+        flex: 0 0 100%;
+    }
+}
+
+.active {
+    color: blue;
+  }
