@@ -1,110 +1,4 @@
-# Coil Information
-
-## Description
-
-The provided code processes a string containing information about a coil and extracts key-value pairs representing various characteristics of the coil. Each line of the input string corresponds to a specific attribute of the coil, and the code splits these lines into key-value pairs based on a predefined pattern. The keys represent the attributes of the coil, such as type, dimensions, current density, etc., while the values represent the corresponding data associated with each attribute.
-
-## Output
-
-```javascript
-[
-  { key: '<span style="color: blue;">Type of Coil......</span>', data: '<span style="color: green;">AL-Layer-Rect</span>' },
-  { key: '<span style="color: blue;">Coil-Length.......</span>', data: '<span style="color: green;">316.000 mm</span>' },
-  { key: '<span style="color: blue;">Cond Mec/ELEC LGTH</span>', data: '<span style="color: green;">292.000 x  280.800</span>' },
-  ...
-]
-
-Contents:
-Section 1: GENERAL INFORMATION
-Section 2: STACKED CORE
-Section 3: LOW VOLTAGE WINDING
-Section 4: HIGH VOLTAGE WINDING
-Section 5: ELECTRICAL CLEARANCES
-Section 6: BASIS FOR CALCULATIONS & MATERIAL PRICES
-Section 7: WEIGHTS, DIMENSIONS, AND COOLING
-Section 8: PRICE & COST
-Section 9: PERFORMANCE DATA
-Section 10: NOTES
-
-https://praworks.github.io/TrafoPro.github.io/
-
------------------------------------------------------------------------------------------------------------------------
-Description:
-The provided code processes a string containing information about a coil and extracts key-value pairs representing various characteristics of the coil. Each line of the input string corresponds to a specific attribute of the coil, and the code splits these lines into key-value pairs based on a predefined pattern. The keys represent the attributes of the coil, such as type, dimensions, current density, etc., while the values represent the corresponding data associated with each attribute.
-
-const inputString = 
-`| Type of Coil......:   AL-Layer-Rect     | Coil-Length.......:          316.000 mm | Cond Mec/ELEC LGTH:  292.000 x  280.800 |
-     | TURNS PER COIL....:       72.0          | Inside Dimensions.: 131.000 x188.732 mm | Cond Dim: Rad/Ax..:   4.500 x 11.500 mm |
-     | CURRENT DENSITY...:        1.351 A/mm2  | Outside Dimensions: 160.814 x218.546 mm | Cond/Lead Weight..:   17.00 /   0.23 kg |
-     |                                         | Inner Perimeter...:      526.0 mm       |                                         |
-     | Cooling Ducts Tk/#:    0.000 mm / 0.00  | Rad Blds (H,Leg,L): 14.91/ 14.91/ 14.91 | Lay/Trn/Duc Wts...:  0.24/  0.34/  0.00 |
-     | Eff No Cool Ducts.: HV: 0 Leg: 0 LV: 0  | Axial Allowance...:            0.000 mm | Total Insul Weight:             0.59 kg |
-     | Short-Circuit Curr:           3150 Amp. | Num Support Sticks:           12        |                                         |
-     | Mean Turn Length..:         572.845 mm  | Lead:    Wd / Tk..:  11.700 /  4.700 mm | Total Coil Weight.:            17.82 kg |
-     | Max Turn Lth Buckl:         4834.992 mm | Bus Bar: Wd / Tk..:  25.000 /  3.000 mm |                                         |
-     | # Lay: Max/Min tpl:    3 : 24.0/ 24.0   | Layer/Turn Ins Bd.:   0.180/   0.200 mm | No Strs-Rad x Ax..:       1 x    1      |
-     | T-RISE/GRADIENT...:     26.0/ 9.9 deg C | Watts/sq m .......:          529.788    | Resistance (Coil).: 0.028058 @ 75 C     |
-     | Turn CSA .........:          50.892 mm2 |                                         | Conductor Dims....: Specified Size      |`;
-
-// Split the input string into an array of values
-const values = inputString.split('|').map(value => value.trim()).filter(value => value !== '');
-
-// Extract relevant information and store them in an array
-const coilInfoArray = values.map(value => {
-    const parts = value.match(/(.{1,18}):\s*(.+)/); // Adjusting the regular expression to properly capture key and data
-    const key = parts[1].trim();
-    const data = parts[2].trim();
-    
-    let individualValues;
-    if (data.includes('/')) {
-        individualValues = data.split(':')[1].trim().split('/').map(value => value.trim());
-    } else {
-        individualValues = [data.trim()];
-    }
-
-    return { key, data: individualValues };
-});
-
-console.log(coilInfoArray);
-
-[
-  { key: 'Type of Coil......', data: 'AL-Layer-Rect' },
-  { key: 'Coil-Length.......', data: '316.000 mm' },
-  { key: 'Cond Mec/ELEC LGTH', data: '292.000 x  280.800' },
-  { key: 'TURNS PER COIL....', data: '72.0' },
-  { key: 'Inside Dimensions.', data: '131.000 x188.732 mm' },
-  { key: 'Cond Dim: Rad/Ax..', data: '4.500 x 11.500 mm' },
-  { key: 'CURRENT DENSITY...', data: '1.351 A/mm2' },
-  { key: 'Outside Dimensions', data: '160.814 x218.546 mm' },
-  { key: 'Cond/Lead Weight..', data: '17.00 /   0.23 kg' },
-  { key: 'Inner Perimeter...', data: '526.0 mm' },
-  { key: 'Cooling Ducts Tk/#', data: '0.000 mm / 0.00' },
-  { key: 'Rad Blds (H,Leg,L)', data: '14.91/ 14.91/ 14.91' },
-  { key: 'Lay/Trn/Duc Wts...', data: '0.24/  0.34/  0.00' },
-  { key: 'Eff No Cool Ducts.', data: 'HV: 0 Leg: 0 LV: 0' },
-  { key: 'Axial Allowance...', data: '0.000 mm' },
-  { key: 'Total Insul Weight', data: '0.59 kg' },
-  { key: 'Short-Circuit Curr', data: '3150 Amp.' },
-  { key: 'Num Support Sticks', data: '12' },
-  { key: 'Mean Turn Length..', data: '572.845 mm' },
-  { key: 'Lead:    Wd / Tk..', data: '11.700 /  4.700 mm' },
-  { key: 'Total Coil Weight.', data: '17.82 kg' },
-  { key: 'Max Turn Lth Buckl', data: '4834.992 mm' },
-  { key: 'Bus Bar: Wd / Tk..', data: '25.000 /  3.000 mm' },
-  { key: '# Lay: Max/Min tpl', data: '3 : 24.0/ 24.0' },
-  { key: 'Layer/Turn Ins Bd.', data: '0.180/   0.200 mm' },
-  { key: 'No Strs-Rad x Ax..', data: '1 x    1' },
-  { key: 'T-RISE/GRADIENT...', data: '26.0/ 9.9 deg C' },
-  { key: 'Watts/sq m .......', data: '529.788' },
-  { key: 'Resistance (Coil).', data: '0.028058 @ 75 C' },
-  { key: 'Turn CSA .........', data: '50.892 mm2' },
-  { key: 'Conductor Dims....', data: 'Specified Size' }
-]
------------------------------------------------------------------------------------------------------------------------
-
-
-const inputString = 
-`     Data File Name: D:\LTLTrafoDesign\ReportVB.dat
+const inputString = `     Data File Name: D:\\LTLTrafoDesign\\ReportVB.dat
  
      *** Using Standard Data from Files;   Using New LTL Core Loss Calculations ***
  
@@ -201,18 +95,23 @@ const values = inputString.split('|').map(value => value.trim()).filter(value =>
 
 // Extract relevant information and store them in an array
 const coilInfoArray = values.map(value => {
-    const parts = value.match(/(.{1,18}):\s*(.+)/); // Adjusting the regular expression to properly capture key and data
-    const key = parts[1].trim();
-    const data = parts[2].trim();
-    
-    let individualValues;
-    if (data.includes('/')) {
-        individualValues = data.split(':')[1].trim().split('/').map(value => value.trim());
-    } else {
-        individualValues = [data.trim()];
-    }
+     const parts = value.match(/(.{1,20}):\s*(.+)/); // Adjusted regular expression for better key capturing
+     if (parts) {
+          const key = parts[1].trim();
+          const data = parts[2].trim();
 
-    return { key, data: individualValues };
-});
+          let individualValues;
+          if (data.includes('/')) {
+               individualValues = data.split('/').map(value => value.trim());
+          } else if (data.includes(':')) {
+               individualValues = data.split(':')[1].trim().split('/').map(value => value.trim());
+          } else {
+               individualValues = [data.trim()];
+          }
+
+          return { key, data: individualValues };
+     }
+     return null;
+}).filter(item => item !== null);
 
 console.log(coilInfoArray);

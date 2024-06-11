@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>TrafoPro</title>
+	<link rel="stylesheet" href=Home.css">
+	<script src="sidebar.js"></script>
+	<script src="setSessionID.js"></script>
+	<script src="Tank_Database.js"></script>
+	<script src="Tank_Calculations.js"></script>
+</head>
+
+<body>
+	<div include-html="sidebar.html"></div>
+	<div class="content">
+		<form id="orderForm" class="form-container">
+			<p id="session-id" style="color: blue;">Your session ID will appear here</p>
+			<h1>Transformer Size Calculator / V24</h1>
+
+			<fieldset>
+				<legend>Transformer Capacity</legend>
+				<select id="transformerCapacity">
+					<option value="kVA">Capacity</option>
+					<option value="25kVA">25kVA</option>
+					<option value="50kVA">50kVA</option>
+					<option value="100kVA">100kVA</option>
+					<option value="160kVA">160kVA</option>
+					<option value="250kVA">250kVA</option>
+					<option value="400kVA">400kVA</option>
+					<option value="630kVA">630kVA</option>
+					<option value="800kVA">800kVA</option>
+					<option value="1,000kVA">1,000kVA</option>
+					<option value="1,250kVA">1,250kVA</option>
+					<option value="1,600kVA">1,600kVA</option>
+					<option value="2,000kVA">2,000kVA</option>
+					<option value="2,500kVA">2,500kVA</option>
+					<option value="3,150kVA">3,150kVA</option>
+				</select>
+
+				<select id="transformerHighVoltage">
+					<option value="V">HV</option>
+					<option value="3,300V">3,300V</option>
+					<option value="6,600V">6,600V</option>
+					<option value="11,000V">11,000V</option>
+					<option value="22,000V">22,000V</option>
+					<option value="33,000V">33,000V</option>
+				</select> /
+
+				<select id="transformerLowVoltage">
+					<option value="V">LV</option>
+					<option value="380V">380V</option>
+					<option value="400V">400V</option>
+					<option value="415V">415V</option>
+					<option value="690V">690V</option>
+					<option value="800V">800V</option>
+					<option value="3,300V">3,300V</option>
+					<option value="6,600V">6,600V</option>
+					<option value="11,000V">11,000V</option>
+				</select>
+
+				<label for="customVoltage">Specify your custom requirements:</label>
+				<input type="text" id="customVoltage" name="customCapacity" placeholder="kVA" style="width: 100px;" />
+				<input type="text" id="customHV" name="customHighVoltage" placeholder="kV" style="width: 100px;" />
+				/
+				<input type="text" id="customLV" name="customLowVoltage" placeholder="V" style="width: 100px;" />
+			</fieldset>
+
+			<fieldset>
+				<legend>Case dimensions</legend>
+				<label for="rib-height">Rib Height: Rad. ht</label>
+				<input type="number" id="rib-height" name="rib-height" value="0">
+				<label for="rib-pan-wd-1">Rib Pan Width 1: Case LS</label>
+				<input type="number" id="rib-pan-wd-1" name="rib-pan-wd-1" value="0">
+				<label for="rib-pan-wd-2">Rib Pan Width 2: Case SS</label>
+				<input type="number" id="rib-pan-wd-2" name="rib-pan-wd-2" value="0">
+				<label for="case-height">Case Height (mm):</label>
+				<input type="number" id="case-height" name="case-height" value="0">
+				<label for="rib-depth-1">Rib Depth 1: LS fin</label>
+				<input type="number" id="rib-depth-1" name="rib-depth-1" value="0">
+				<label for="rib-depth-2">Rib Depth 2: SS fin</label>
+				<input type="number" id="rib-depth-2" name="rib-depth-2" value="0">
+				<label for="ribWeight">Rib Weight:</label>
+				<input type="number" id="ribWeight" name="ribWeight" value="0">
+				<label for="activePartWeight">Active Part Weight:</label>
+				<input type="number" id="activePartWeight" name="activePartWeight" value="0"><br>
+				<label for="oilWeight">Oil Weight:</label>
+				<input type="number" id="oilWeight" name="oilWeight" value="0"><br>
+			</fieldset>
+
+			<script>
+
+			</script>
+
+
+
+
+
+
+			<fieldset>
+				<legend>Other dimensions</legend>
+				<label for="cover-plate-thickness">Cover plate thickness:</label>
+				<select id="cover-plate-thickness" name="cover-plate-thickness">
+					<option value="4">4</option>
+					<option value="6">6</option>
+					<option value="8">8</option>
+					<option value="10">10</option>
+				</select>
+				<br>
+				<label for="flange">Flange:</label>
+				<select id="flange" name="flange">
+					<option value="L50x50x6">L 50x50x6</option>
+					<option value="L75x75x6">L 75x75x6</option>
+					<option value="L75x75x10">L 75x75x10</option>
+					<option value="L125x75x8">L 125x75x8</option>
+				</select> <br>
+				<label for="radiatorThickness">Radiator Thickness:</label>
+				<select id="radiatorThickness" name="radiatorThickness">
+					<option value="1.2">1.2</option>
+					<option value="1.5">1.5</option>
+				</select>
+				<br>
+				<label for="gasketThickness">Gasket thickness:</label>
+				<select id="gasketThickness" name="gasketThickness">
+					<option value="6">6</option>
+					<option value="8">8</option>
+				</select>
+				<br>
+				<label for="base-plate-thickness">Base plate thickness:</label>
+				<select id="base-plate-thickness" name="base-plate-thickness">
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="6">6</option>
+				</select>
+				<br>
+				<label for="baseSkid">Base skid:</label>
+				<select id="baseSkid" name="baseSkid">
+					<option value="C75x40x4_8">C 75x40x6</option>
+					<option value="C100x50x5">C 100x50x6</option>
+					<option value="C150x75x6_5">C 150x75x6.5</option>
+					<option value="C250x80x9">C 250x75x9</option>
+					<option value="H150x150x10">H 150x150x10</option>
+				</select>
+
+				<label for="kvaBaseDimension">Select kVA:</label>
+				<select id="kvaBaseDimension">
+					<option value="BD100kVA">100kVA - 420x520</option>
+					<option value="BD160kVA">160kVA - 520x520</option>
+					<option value="BD250kVA">250kVA - 520x520</option>
+					<option value="BD400kVA">400kVA - 670x670</option>
+					<option value="BD630kVA">630kVA - 700x680</option>
+					<option value="BD800kVA">800kVA - 700x680</option>
+					<option value="BD1000kVA">1000kVA - 800x680</option>
+					<option value="BD1250kVA">1250kVA - 900x900</option>
+					<option value="BD1600kVA">1600kVA - 900x900</option>
+					<option value="BD2000kVA">2000kVA - 900x1000</option>
+					<option value="BD2500kVA">2500kVA - 900x1000</option>
+					<option value="BD3150kVA">3150kVA - 900x1000</option>
+				</select>
+			</fieldset>
+
+			<fieldset>
+				<legend>Low voltage side; EN 50386</legend>
+				<label for="lvSide">Select an option:</label>
+				<select id="lvSide" name="lvSide">
+					<option value="lvPorcelain1kV250A">Porcelain 1kV/250A CD=55</option>
+					<option value="lvPorcelain1kV630A">Porcelain 1kV/630A CD=70</option>
+					<option value="lvPorcelain1kV1250A">Porcelain 1kV/1250A CD=75</option>
+					<option value="lvPorcelain1x1kV2000A">Porcelain 1kV/1x2000A CD=75</option>
+					<option value="lvPorcelain2x1kV2000A">Porcelain 2x1kV/2000A CD=75</option>
+					<option value="lvPorcelain1x1kV3150A">Porcelain 1kV/1x3150A CD=75</option>
+					<option value="lvPorcelain2x1kV3150A">Porcelain 2x1kV/3150A CD=75</option>
+					<option value="hvPorcelain12kV250AP4">Porcelain 12kV/250A P4 CD=372 AD=260</option>
+					<option value="lvPorcelain1kV250Acb">Porcelain 1kV/250A CD=55 + Cable box</option>
+					<option value="lvPorcelain1kV630Acb">Porcelain 1kV/630A CD=70 + Cable box</option>
+					<option value="lvPorcelain1kV1250Acb">Porcelain 1kV/1250A CD=75 + Cable box</option>
+					<option value="lvPorcelain1x1kV2000Acb">Porcelain 1kV/1x2000A CD=75 + Cable box</option>
+					<option value="lvPorcelain2x1kV2000Acb">Porcelain 2x1kV/2000A CD=75 + Cable box</option>
+					<option value="lvPorcelain1x1kV3150Acb">Porcelain 1kV/1x3150A CD=75 + Cable box</option>
+					<option value="lvPorcelain2x1kV3150Acb">Porcelain 2x1kV/3150A CD=75 + Cable box</option>
+					<option value="lvCastResinMonoblock1700Acb">Cast Resin Monoblock 1700A + Cable box</option>
+					<option value="hvEpoxyBushing1M100_630cb">Porcelain 1M (100kVA-630kVA) + Cable box</option>
+					<option value="hvEpoxyBushing1M800_1000cb">Porcelain 1M (800kVA-1000kVA) + Cable box</option>
+				</select>
+				<br>
+				<label for="LvSurgeArresterMount">Surge Arrester Mounting Bracket:</label>
+				<select id="LvSurgeArresterMount" name="LvSurgeArresterMount">
+					<option value="lvSurgeArresterMountingNA">Not Required</option>
+					<option value="hvSurgeArresterMountingBelow401TypA">Surge Arrester Mounting Bracket Below 401kVA
+						Type-A</option>
+					<option value="hvSurgeArresterMountingAbove400TypA">Surge Arrester Mounting Bracket Above 400kVA
+						Type-A</option>
+					<option value="hvSurgeArresterMountingTypB">Surge Arrester Mounting Bracket Type-B</option>
+				</select>
+			</fieldset>
+
+			<fieldset>
+				<legend>High voltage side</legend>
+				<label for="tapChanger">Select Tap changer:</label>
+				<select id="tapChanger" name="tapChanger">
+					<option value="HR20kV30A5POSL100">HR 20kV 30A 5POS L100 (713.235)</option>
+					<option value="HM20kV63A5POSL131">HM 20kV 63A 5POS L131 (25.43.885)</option>
+					<option value="HM20kV120A5POSL131">HM 20kV 120A 5POS L131 (28.43.885)</option>
+					<option value="HR30kV30A5POSL100">HR 30kV 30A 5POS L100 (713.335)</option>
+					<option value="HM30kV30A5POSL131">HM 30kV 30A 5POS L131 (23.44.885)</option>
+				</select> <br>
+
+				<label for="hvSide">Select Hv Bushing:</label>
+				<select id="hvSide" name="hvSide">
+					<option value="hvPorcelain12kV250AP1">Porcelain 12kV/250A P1 CD=190 AD=145</option>
+					<option value="hvPorcelain12kV250AP2">Porcelain 12kV/250A P2 CD=240 AD=145</option>
+					<option value="hvPorcelain12kV250AP4">Porcelain 12kV/250A P4 CD=372 AD=260</option>
+					<option value="hvPorcelain24kV250AP2">Porcelain 24kV/250A P2 CD=480 AD=260</option>
+					<option value="hvPorcelain24kV250AP3">Porcelain 24kV/250A P3 CD=600 AD=315</option>
+					<option value="hvPorcelain24kV250AP4">Porcelain 24kV/250A P4 CD=744 AD=465</option>
+					<option value="hvPorcelain36kV250AP1">Porcelain 36kV/250A P1 CD=576 AD=315</option>
+					<option value="hvPorcelain36kV250AP3">Porcelain 36kV/250A P3 CD=900 AD=465</option>
+					<option value="hvPorcelain36kV250AP4">Porcelain 36kV/250A P4 CD=1116 AD=485</option>
+					<option value="hvEpoxy12_24KV250AinterfaceA">Epoxy 12-24KV 250A Interface-A</option>
+					<option value="hvEpoxy12kV630AinterfaceC">Epoxy 12kV 630A Interface-C</option>
+					<option value="hvEpoxy36kV250AinterfaceB">Epoxy 36kV 250A Interface-B</option>
+					<option value="hvEpoxy36kV400AinterfaceB">Epoxy 36kV 400A Interface-B</option>
+					<option value="hvEpoxy36kV630AinterfaceC">Epoxy 36kV 630A Interface-C</option>
+					<option value="hvEpoxy12_24KV250AinterfaceAcbL510">Epoxy 12-24KV 250A Interface-A + Cable box L 510
+					</option>
+					<option value="hvEpoxy12kV630AinterfaceCcbL510">Epoxy 12kV 630A Interface-C + Cable box L 510
+					</option>
+					<option value="hvEpoxy36kV250AinterfaceBcbL510">Epoxy 36kV 250A Interface-B + Cable box L 510
+					</option>
+					<option value="hvEpoxy36kV400AinterfaceBcbL510">Epoxy 36kV 400A Interface-B + Cable box L 510
+					</option>
+					<option value="hvEpoxy36kV630AinterfaceCcbL510">Epoxy 36kV 630A Interface-C + Cable box L 510
+					</option>
+					<option value="hvEpoxy12_24KV250AinterfaceAcbL610">Epoxy 12-24KV 250A Interface-A + Cable box L 610
+					</option>
+					<option value="hvEpoxy12kV630AinterfaceCcbL610">Epoxy 12kV 630A Interface-C + Cable box L 610
+					</option>
+					<option value="hvEpoxy36kV250AinterfaceBcbL610">Epoxy 36kV 250A Interface-B + Cable box L 610
+					</option>
+					<option value="hvEpoxy36kV400AinterfaceBcbL610">Epoxy 36kV 400A Interface-B + Cable box L 610
+					</option>
+					<option value="hvEpoxy36kV630AinterfaceCcbL610">Epoxy 36kV 630A Interface-C + Cable box L 610
+					</option>
+					<option value="hvEpoxyBushing1M100_630cb">Porcelain 1M (100kVA-630kVA) + Cable box</option>
+					<option value="hvEpoxyBushing1M800_1000cb">Porcelain 1M (800kVA-1000kVA) + Cable box</option>
+				</select>
+				<br>
+				<label for="HvSurgeArresterMount">Surge Arrester Mounting Bracket:</label>
+				<select id="HvSurgeArresterMount" name="HvSurgeArresterMount">
+					<option value="hvSurgeArresterMountingNA">Not Required</option>
+					<option value="hvSurgeArresterMountingBelow401TypA">Surge Arrester Mounting Bracket Below 401kVA
+						Type-A</option>
+					<option value="hvSurgeArresterMountingAbove400TypA">Surge Arrester Mounting Bracket Above 400kVA
+						Type-A</option>
+					<option value="hvSurgeArresterMountingTypB">Surge Arrester Mounting Bracket Type-B</option>
+				</select>
+				<br>
+				<label for="HvSurgeArresters">Surge Arresters:</label>
+				<select id="HvSurgeArresters" name="HvSurgeArresters">
+					<option value="CompositeSurgeArresterNA">Not Required</option>
+					<option value="CompositeSurgeArrester">Surge Arrester Required</option>
+				</select>
+			</fieldset>
+
+			<fieldset>
+				<legend>Wheels</legend>
+				<label for="wheels">Select an option:</label>
+				<select id="wheels" name="wheels">
+					<option value="Not required" selected>Not required</option>
+					<option value="Wh_125_1200">125 - 1200 kg</option>
+					<option value="Wh_125_1200">125 - 2500 kg</option>
+					<option value="Wh_160_4000">160 - 4000 kg</option>
+					<option value="Wh_200_6000">200 - 6000 kg</option>
+				</select>
+			</fieldset>
+
+			<fieldset>
+				<legend>Additional options</legend>
+				<label>
+					Integrated Safety Detector (ISD)
+					<input type="checkbox" id="integratedSafetyDetector" name="additionalOptions" value="ISD"
+						style="margin-left: 250px;" />
+				</label><br />
+				<label>
+					Oil Temperature Indicator
+					<input type="checkbox" id="oilTemperatureIndicator" name="additionalOptions"
+						value="Oil Temperature Indicator" style="margin-left: 250px;" />
+				</label><br />
+
+				<label>
+					Magnetic Oil Level Indicator
+					<input type="checkbox" id="magneticOilLevelIndicator" name="additionalOptions"
+						value="Magnetic Oil Level Indicator" style="margin-left: 250px;" />
+				</label><br />
+
+				<label>
+					Float Oil Level Indicator
+					<input type="checkbox" id="floatOilLevelIndicator" name="additionalOptions"
+						value="Float Oil Level Indicator" style="margin-left: 250px;" />
+				</label><br />
+
+				<label>
+					Winding Temperature Indicator
+					<input type="checkbox" id="windingTemperatureIndicator" name="additionalOptions"
+						value="Winding Temperature Indicator" style="margin-left: 250px;" />
+				</label><br />
+				<label>
+					Marshalling Box
+					<input type="checkbox" id="marshallingBox" name="additionalOptions" value="Marshalling Box"
+						style="margin-left: 250px;" />
+				</label><br />
+				<label>
+					Current Transformer
+					<input type="checkbox" id="currentTransformer" name="additionalOptions" value="Current Transformer"
+						style="margin-left: 250px;" />
+				</label><br />
+				<label>
+					PRV
+					<input type="checkbox" id="PRV" name="additionalOptions" value="PRV" style="margin-left: 250px;" />
+				</label><br />
+				<label>
+					Drain Valve
+					<input type="checkbox" id="DrainValve" name="additionalOptions" value="Drain Valve"
+						style="margin-left: 250px;" />
+				</label><br />
+			</fieldset>
+
+			<div class="button-container">
+				<button type="reset" class="win98-button button-gap">Reset</button>
+				<button type="button" id="calculateButton" class="win98-button button-gap">Calculate</button>
+			</div>
+
+			<div>
+				<h3>Alerts</h3>
+				<div id="alertList"></div>
+				<br>
+			</div>
+
+			<table>
+				<h3>Overall Dimension Summary</h3>
+				<tr>
+					<th>Description</th>
+					<th>Dimension (mm / kg)</th>
+				</tr>
+				<tr>
+					<td>Overall Length</td>
+					<td><span id="overallLength"></span></td>
+				</tr>
+				<tr>
+					<td>Overall Width</td>
+					<td><span id="overallWidth"></span></td>
+				</tr>
+				<tr>
+					<td>Overall Height</td>
+					<td><span id="overallHeight"></span></td>
+				</tr>
+				<tr>
+					<td>Outline Weight</td>
+					<td><span id="outlineWeight"></span></td>
+				</tr>
+				<tr>
+					<td>Dispatch Weight</td>
+					<td><span id="transportWeight">Function not assigned</span></td>
+				</tr>
+			</table>
+
+			<table>
+				<h3>Overall Weight Summary </h3>
+				<tr>
+					<th>Description</th>
+					<th>Item</th>
+					<th>Values (kg)</th>
+				</tr>
+				<tr>
+					<td>Radiator</td>
+					<td></td>
+					<td><span id="SelectedRibWeight"></span></td>
+
+				</tr>
+				<tr>
+					<td>Cover Plate</td>
+					<td></td>
+					<td><span id="coverPlateWeight"></span></td>
+				</tr>
+				<tr>
+					<td>Flange Weight</td>
+					<td></td>
+					<td><span id="flangeWeight"></span></td>
+				</tr>
+				<tr>
+					<td>Base</td>
+					<td></td>
+					<td><span id="baseWeight"></span></td>
+				</tr>
+				<tr>
+					<td>Base Skid</td>
+					<td></td>
+					<td><span id="baseSkidWeight"></span></td>
+				</tr>
+				<tr>
+					<td>Drain Valve</td>
+					<td></td>
+					<td><span id="drainValveWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>PRV Boss</td>
+					<td></td>
+					<td><span id="bossPrvWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>OLI Boss</td>
+					<td></td>
+					<td><span id="bossOliWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>Thermometer pocket</td>
+					<td></td>
+					<td><span id="thermometerPocketWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>Thermowell</td>
+					<td></td>
+					<td><span id="thermowellWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>Total Tank Steel</td>
+					<td></td>
+					<td><span id="totalTankSteelWeight" style="color: red;"></span></td>
+				</tr>
+
+				<tr>
+					<td>HV Box</td>
+					<td></td>
+					<td><span id="selectedHVBoxWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>LV Box</td>
+					<td></td>
+					<td><span id="selectedLVBoxWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>Marshaling Box</td>
+					<td></td>
+					<td><span id="marshalingBoxWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>LV Surge Arrester mount</td>
+					<td></td>
+					<td><span id="lvSurgeArrestingMountWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>HV Surge Arrester mount</td>
+					<td></td>
+					<td><span id="hvSurgeArrestingMountWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>HV Bushings</td>
+					<td></td>
+					<td><span id="hvBushingWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>LV Bushings</td>
+					<td></td>
+					<td><span id="lvBushingWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>Tap Changer</td>
+					<td></td>
+					<td><span id="tapChangerWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>ISD</td>
+					<td></td>
+					<td><span id="isdWeight"></span></td>
+				</tr>
+				<tr>
+					<td>OTI</td>
+					<td></td>
+					<td><span id="otiWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>OLI</td>
+					<td></td>
+					<td><span id="oliWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>WTI</td>
+					<td></td>
+					<td><span id="wtiWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>CT</td>
+					<td></td>
+					<td><span id="ctWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>PRV</td>
+					<td></td>
+					<td><span id="prvWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>Oil</td>
+					<td></td>
+					<td><span id="oilWeightDisplay"></span></td>
+				</tr>
+
+				<tr>
+					<td>Active Part</td>
+					<td></td>
+					<td><span id="activePartWeightDispaly"></span></td>
+				</tr>
+
+				<tr>
+					<td>Wheels</td>
+					<td></td>
+					<td><span id="wheelWeight"></span></td>
+				</tr>
+
+				<tr>
+					<td>Pallet</td>
+					<td></td>
+					<td><span id="palletWeight"></span></td>
+				</tr>
+			</table>
+
+			<table>
+				<h3>Container Capacity</h3>
+				<tr>
+					<th>Description</th>
+					<th>Values</th>
+					<th>Values</th>
+				</tr>
+				<tr>
+					<td>20ft Container Capacity</td>
+					<td></td>
+					<td><span id="container20ftCapacity"></span></td>
+				</tr>
+				<tr>
+					<td>40ft Container Capacity</td>
+					<td></td>
+					<td><span id="container40ftCapacity"></span></td>
+				</tr>
+				<tr>
+					<td>45ft Container Capacity</td>
+					<td></td>
+					<td><span id="container45ftCapacity"></span></td>
+				</tr>
+			</table>
+		</form>
+
+		<script>
+			// Retrieve the value from sessionStorage
+			var ribHeight = sessionStorage.getItem("s7-Rib-Height");
+
+			// If the value exists, process it
+			if (ribHeight) {
+				// Extract the numeric part (assuming it's the first part before any slashes)
+				ribHeight = ribHeight.split('/')[0].trim();
+
+				// Set the value to the input element with id="rib-height"
+				document.getElementById("rib-height").value = ribHeight;
+			}
+
+			var ribPanWd1 = sessionStorage.getItem("s7-Rib-Pan-Wd-1");
+			if (ribPanWd1) {
+				ribPanWd1 = ribPanWd1.split('/')[0].trim();
+				document.getElementById("rib-pan-wd-1").value = ribPanWd1;
+			}
+
+			var ribPanWd2 = sessionStorage.getItem("s7-Rib-Pan-Wd-1");
+			if (ribPanWd2) {
+				ribPanWd2 = ribPanWd2.split('/')[1].trim();
+				document.getElementById("rib-pan-wd-2").value = ribPanWd2;
+			}
+
+			var caseHeight = sessionStorage.getItem("s7-Case-Lt-Wd-Ht");
+			if (caseHeight) {
+				caseHeight = caseHeight.split('x')[2].trim();
+				document.getElementById("case-height").value = caseHeight;
+			}
+
+			var ribDepth1 = sessionStorage.getItem("s7-Rib-Depth-1");
+			if (ribDepth1) {
+				ribDepth1 = ribDepth1.split('/')[0].trim();
+				document.getElementById("rib-depth-1").value = ribDepth1;
+			}
+
+			var ribDepth2 = sessionStorage.getItem("s7-Rib-Depth-1");
+			if (ribDepth2) {
+				ribDepth2 = ribDepth2.split('/')[1].trim();
+				document.getElementById("rib-depth-2").value = ribDepth2;
+			}
+
+			var ribWeight = sessionStorage.getItem("s7-Ribs-Press-Weight");
+			if (ribWeight) {
+				ribWeight = ribWeight.split(' ')[5].trim();
+				document.getElementById("ribWeight").value = ribWeight;
+			}
+
+			// i want 404 from s7-Active-Part-Weight	404 kg
+			var activePartWeight = sessionStorage.getItem("s7-Active-Part-Weight");
+			if (activePartWeight) {
+				activePartWeight = activePartWeight.split(' ')[0].trim();
+				document.getElementById("activePartWeight").value = activePartWeight;
+			}
+
+			// iwant 188 from s7-Mineral-Oil-Weight	188 kg
+			var oilWeight = sessionStorage.getItem("s7-Mineral-Oil-Weight");
+			if (oilWeight) {
+				oilWeight = oilWeight.split(' ')[0].trim();
+				document.getElementById("oilWeight").value = oilWeight;
+			}
+
+		</script>
+
+</body>
+
+</html>
