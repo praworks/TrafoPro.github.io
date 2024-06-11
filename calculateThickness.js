@@ -1,13 +1,16 @@
 // Function to calculate thickness
 function calculateThickness() {
+    // Get the lead width and thickness from the sessionStorage
+    var leadString = sessionStorage.getItem("s3-LeadWxT");
+    var parts = leadString.split("/");
+    var lead_width = parts[0].trim(); 
+    var lead_thickness = parts[1].replace("mm", "").trim(); 
+
     var coreMaterial = document.getElementById("coreMaterial");
     var stepCount = parseInt(document.getElementById("stepCount").value);
     var coreRequiredArea = parseFloat(document.getElementById("coreRequiredArea").value);
     var minGapCoreToLead = parseFloat(document.getElementById("minGapCoreToLead").value);
     var leadSize = document.getElementById("leadSize");
-    var lead = leadSize.options[leadSize.selectedIndex];
-    var lead_thickness = parseFloat(lead.getAttribute("lead_thick"));
-    var lead_width = parseFloat(lead.getAttribute("lead_width"));
     var resultsDiv = document.getElementById("results");
     var coreSheetThk = 5 * parseFloat(coreMaterial.options[coreMaterial.selectedIndex].getAttribute("coreSheetThk"));
     var centerToCenter = parseFloat(document.getElementById("centerToCenter").value);
@@ -70,7 +73,7 @@ function calculateThickness() {
         resultsDiv.innerHTML += "Step 2 Limb Center Distance: " + Step2LimbCenterDistance.toFixed(2) + " mm <br>";
         resultsDiv.innerHTML += "Step 3 Yoke Center Distance: " + Step3YokeCenterDistance.toFixed(2) + " mm <br>";
         resultsDiv.innerHTML += "Step 3 Limb Center Distance: " + Step3LimbCenterDistance.toFixed(2) + " mm <br>";
-        
+
     } else if (stepCount === 4) {
         var step1Width = parseFloat(document.getElementById("step1Width").value);
         var step2Width = parseFloat(document.getElementById("step2Width").value);
