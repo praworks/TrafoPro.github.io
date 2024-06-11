@@ -36,16 +36,16 @@ const MaterialData = [
     { id: 'ACIN0050', type: 'Cu Foil', dimensions: '800 x 1.35 x 2' },
 
     // Cu Rectangular
-    { id: "ACIN0020", "type": "Cu Rectangular", "dimensions": "3.5 x 11.5" },
-    { id: "ACIN0021", "type": "Cu Rectangular", "dimensions": "3.5 x 17.5" },
-    { id: "ACIN0022", "type": "Cu Rectangular", "dimensions": "3.5 x 9.5" },
-    { id: "ACIN0026", "type": "Cu Rectangular", "dimensions": "4.5 x 10" },
-    { id: "HVRC0001", "type": "Cu Rectangular", "dimensions": "3 x 6" },
-    { id: "HVRC0002", "type": "Cu Rectangular", "dimensions": "3 x 6.35" },
-    { id: "HVRC0003", "type": "Cu Rectangular", "dimensions": "3.5 x 11.5" },
-    { id: "HVRC0004", "type": "Cu Rectangular", "dimensions": "3.5 x 17.5" },
-    { id: "HVRC0005", "type": "Cu Rectangular", "dimensions": "3.5 x 9.5" },
-    { id: "HVRC0006", "type": "Cu Rectangular", "dimensions": "4.5 x 10" },
+    { id: 'ACIN0020', type: 'Cu Rectangular', dimensions: '3.5 x 11.5' },
+    { id: 'ACIN0021', type: 'Cu Rectangular', dimensions: '3.5 x 17.5' },
+    { id: 'ACIN0022', type: 'Cu Rectangular', dimensions: '3.5 x 9.5' },
+    { id: 'ACIN0026', type: 'Cu Rectangular', dimensions: '4.5 x 10' },
+    { id: 'HVRC0001', type: 'Cu Rectangular', dimensions: '3 x 6' },
+    { id: 'HVRC0002', type: 'Cu Rectangular', dimensions: '3 x 6.35' },
+    { id: 'HVRC0003', type: 'Cu Rectangular', dimensions: '3.5 x 11.5' },
+    { id: 'HVRC0004', type: 'Cu Rectangular', dimensions: '3.5 x 17.5' },
+    { id: 'HVRC0005', type: 'Cu Rectangular', dimensions: '3.5 x 9.5' },
+    { id: 'HVRC0006', type: 'Cu Rectangular', dimensions: '4.5 x 10' },
 
     // Cu Busbar
     { id: 'BBUS0001', type: 'Cu Busbar', dimensions: '25 x 3' },

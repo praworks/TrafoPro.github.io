@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="Home.css">
+</head>
+
+<body>
+    <div include-html="sidebar.html"></div>
+    <div class="content">
+        <div class="form-group">
+            <p id="session-id" style="color: blue;">Your session ID will appear here</p>
+            <form id="upload-form">
+            </form>
+        </div>
+        <p>Upload and Process File</p>
+        <input type="file" id="fileInput" accept=".txt">
+        <button onclick="processFile()">Process File</button>
+        <div id="output"></div>
+        <div include-html="DesignSheetProcess/Section-1.html"></div>
+        <div include-html="DesignSheetProcess/Section-2.html"></div>
+        <div include-html="DesignSheetProcess/Section-3.html"></div>
+        <div include-html="DesignSheetProcess/Section-4.html"></div>
+        <div include-html="DesignSheetProcess/Section-5.html"></div>
+        <div include-html="DesignSheetProcess/Section-6.html"></div>
+        <div include-html="DesignSheetProcess/Section-7.html"></div>
+        <div include-html="DesignSheetProcess/Section-8.html"></div>
+        <div include-html="DesignSheetProcess/Section-9.html"></div>
+        <div include-html="DesignSheetProcess/Section-10.html"></div>
+    </div>
+
+    <script src="sidebar.js"></script>
+    <script src="setSessionID.js"></script>
+    <script src="DesignSheetProcess/Section-1.js"></script>
+    <script src="DesignSheetProcess/Section-2.js"></script>
+    <script src="DesignSheetProcess/Section-3.js"></script>
+    <script src="DesignSheetProcess/Section-4.js"></script>
+    <script src="DesignSheetProcess/Section-5.js"></script>
+    <script src="DesignSheetProcess/Section-6.js"></script>
+    <script src="DesignSheetProcess/Section-7.js"></script>
+    <script src="DesignSheetProcess/Section-8.js"></script>
+    <script src="DesignSheetProcess/Section-9.js"></script>
+    <script src="DesignSheetProcess/Section-10.js"></script>
+
+    <script>
+        // Define a function to get the name of the failed function
+        function getFailedFunctionName(error) {
+            if (error && error.stack) {
+                const matches = error.stack.match(/at\s+(.*)\s+\(/);
+                if (matches && matches.length > 1) {
+                    return matches[1];
+                }
+            }
+            return 'Unknown';
+        }
+
+        function processFile() {
+            const fileInput = document.getElementById('fileInput');
+            const output = document.getElementById('output');
+
+            if (!fileInput.files.length) {
+                alert("Please select a file first!");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                const text = event.target.result;
+
+                // Define the section headers
+                const headers = [
+
+                    'S T A C K E D    C O R E',
+                    'L O W   V O L T A G E   W I N D I N G',
+                    'H I G H   V O L T A G E   W I N D I N G',
+                    'E L E C T R I C A L   C L E A R A N C E S',
+                    'BASIS FOR CALCULATIONS',
+                    'WEIGHTS, DIMENSIONS, AND COOLING',
+                    'PRICE & COST',
+                    'PERFORMANCE DATA',
+                    'NOTES'
+                ];
+
+                // Function to extract sections based on headers
+                function extractSections(text, headers) {
+                    const sections = {};
+                    let currentHeader = 'GENERAL INFORMATION';
+                    sections[currentHeader] = [];
+
+                    // Split text into lines
+                    const lines = text.split('\n');
+
+                    lines.forEach(line => {
+                        // Check if the line matches any header
+                        const header = headers.find(h => line.includes(h));
+                        if (header) {
+                            currentHeader = header;
+                            sections[currentHeader] = [];
+                        } else if (currentHeader) {
+                            sections[currentHeader].push(line);
+                        }
+                    });
+
+                    // Join lines for each section
+                    for (const header in sections) {
+                        sections[header] = sections[header].join('\n');
+                    }
+                    return sections;
+
+                }
+
+                const sections = extractSections(text, headers);
+
+                sessionStorage.setItem('section1', JSON.stringify(sections['GENERAL INFORMATION']));
+                fetchSection1();
+                sessionStorage.setItem('section2', JSON.stringify(sections['S T A C K E D    C O R E']));
+                fetchSection2();
+                sessionStorage.setItem('section3', JSON.stringify(sections['L O W   V O L T A G E   W I N D I N G']));
+                fetchSection3();
+                sessionStorage.setItem('section4', JSON.stringify(sections['H I G H   V O L T A G E   W I N D I N G']));
+                fetchSection4();
+                sessionStorage.setItem('section5', JSON.stringify(sections['E L E C T R I C A L   C L E A R A N C E S']));
+                fetchSection5();
+                sessionStorage.setItem('section6', JSON.stringify(sections['BASIS FOR CALCULATIONS']));
+                fetchSection6();
+                sessionStorage.setItem('section7', JSON.stringify(sections['WEIGHTS, DIMENSIONS, AND COOLING']));
+                fetchSection7();
+                sessionStorage.setItem('section8', JSON.stringify(sections['PRICE & COST']));
+                fetchSection8();
+                sessionStorage.setItem('section9', JSON.stringify(sections['PERFORMANCE DATA']));
+                fetchSection9();
+                sessionStorage.setItem('section10', JSON.stringify(sections['NOTES']));
+                fetchSection10();
+
+                // Display the sections
+                output.innerHTML = `
+                    <h2>Section 1: GENERAL INFORMATION</h2>
+                    <pre>${sections['GENERAL INFORMATION'] || ''}</pre>
+
+                    <h2>Section 2: STACKED CORE</h2>
+                    <pre>${sections['S T A C K E D    C O R E'] || ''}</pre>
+
+                    <h2>Section 3: LOW VOLTAGE WINDING</h2>
+                    <pre>${sections['L O W   V O L T A G E   W I N D I N G'] || ''}</pre>
+
+                    <h2>Section 4: HIGH VOLTAGE WINDING</h2>
+                    <pre>${sections['H I G H   V O L T A G E   W I N D I N G'] || ''}</pre>
+
+                    <h2>Section 5: ELECTRICAL CLEARANCES</h2>
+                    <pre>${sections['E L E C T R I C A L   C L E A R A N C E S'] || ''}</pre>
+
+                    <h2>Section 6: BASIS FOR CALCULATIONS, MATERIAL  PRICES IN USD/KG</h2>
+                    <pre>${sections['BASIS FOR CALCULATIONS'] || ''}</pre>
+
+                    <h2>Section 7: WEIGHTS, DIMENSIONS, AND COOLING</h2>
+                    <pre>${sections['WEIGHTS, DIMENSIONS, AND COOLING'] || ''}</pre>
+
+                    <h2>Section 8: PRICE & COST</h2>
+                    <pre>${sections['PRICE & COST'] || ''}</pre>
+
+                    <h2>Section 9: PERFORMANCE DATA</h2>
+                    <pre>${sections['PERFORMANCE DATA'] || ''}</pre>
+
+                    <h2>Section 10: NOTES</h2>
+                    <pre>${sections['NOTES'] || ''}</pre>
+                `;
+            };
+
+            reader.onerror = function (error) {
+                const failedFunctionName = getFailedFunctionName(error);
+                console.error(`Failed in function: ${failedFunctionName}`);
+                alert('Error reading file. Please try again.');
+            };
+
+            reader.readAsText(file);
+        }
+    </script>
+
+</body>
+
+</html>

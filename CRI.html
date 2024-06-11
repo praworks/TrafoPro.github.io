@@ -7,7 +7,6 @@
   <title>Home</title>
   <link rel="stylesheet" href="Home.css">
   <script src="sidebar.js"></script>
-  <script src="downloadCSV.js"></script>
   <script src="setSessionID.js"></script>
 </head>
 
@@ -15,55 +14,225 @@
   <div include-html="sidebar.html"></div>
   <form id="userDataForm">
     <div class="content">
-      <!-- Your main content goes here -->
-      <p id="session-id" style="color: blue;">Your session ID will appear here</p>
-
-      <div class="form-group">
-        <label for="contract">Customer:</label>
-        <input type="text" id="contract" name="contract" value=""><br>
-        <label for="country">Country:</label>
-        <input type="text" id="country" name="country" value=""><br>
-        <label for="contractNumber">Contract Number:</label>
-        <input type="text" id="contractNumber" name="contractNumber" value="CT-"><br>
-      </div>
-
-      <div class="form-group">
-        <label for="powerRating">Power Rating (kVA):</label>
-        <input type="number" id="powerRating" name="powerRating" value=""><br>
-        <label for="voltage">Voltage (V):</label>
-        <input type="number" id="voltage" name="voltage" value=""><br>
-        <label for="frequency">Frequency (Hz):</label>
-        <input type="number" id="frequency" name="frequency" value=""><br>
-        <label for="phase">Phase:</label>
-        <select id="phase" name="phase">
-          <option value="1">1</option>
-          <option value="3">3</option>
-        </select><br>
-        <label for="insulation">Insulation:</label>
-        <select id="insulation" name="insulation">
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-          <option value="E">E</option>
-          <option value="F">F</option>
-          <option value="H">H</option>
-        </select><br>
-        <label for="temperature">Temperature (°C):</label>
-        <input type="number" id="temperature" name="temperature" value=""><br>
-        <label for="cooling">Cooling:</label>
-        <select id="cooling" name="cooling">
-          <option value="ONAN">ONAN</option>
-        </select><br>
-        <label for="vectorGroup">Vector Group:</label>
-        <select id="vectorGroup" name="vectorGroup">
-          <option value="Dyn11">Dyn11</option>
-          <option value="Yyn0">Yyn0</option>
-          <option value="Yd1">Yd1</option>
-          <option value="Dd0">Dd0</option>
-      </div>
-      Update db button
-  </form>
-  </div>
-</body>
-
-</html>
+      <!DOCTYPE html>
+      <html lang="en">
+      
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <link rel="stylesheet" href="Home.css">
+        <script src="sidebar.js"></script>
+        <script src="setSessionID.js"></script>
+      </head>
+      <body>
+          <form>
+              <!-- Section I: Customer/Project Details -->
+              <div class="section">
+                  <h2>SECTION I: CUSTOMER/PROJECT DETAILS</h2>
+                  <div class="form-group">
+                      <label for="companyName">Company Name</label>
+                      <input type="text" id="companyName" name="companyName">
+                  </div>
+                  <div class="form-group">
+                      <label for="contactPerson">Contact Person Name</label>
+                      <input type="text" id="contactPerson" name="contactPerson">
+                  </div>
+                  <div class="form-group">
+                      <label for="address">Address</label>
+                      <textarea id="address" name="address"></textarea>
+                  </div>
+                  <div class="form-group">
+                      <label for="contact">Contact</label>
+                      <input type="text" id="contact" name="contact">
+                  </div>
+                  <div class="form-group">
+                      <label for="application">Application</label>
+                      <input type="text" id="application" name="application">
+                  </div>
+                  <div class="form-group">
+                      <label for="projectName">Project Name / End Client</label>
+                      <input type="text" id="projectName" name="projectName">
+                  </div>
+                  <div class="form-group">
+                      <label for="environment">Installation Environment</label>
+                      <input type="text" id="environment" name="environment">
+                  </div>
+                  <div class="form-group">
+                      <label for="location">Installation Location (Country / City)</label>
+                      <input type="text" id="location" name="location">
+                  </div>
+                  <div class="form-group">
+                      <label for="quotationRequestedDate">Quotation Requested Date (YYYY/MM/DD)</label>
+                      <input type="date" id="quotationRequestedDate" name="quotationRequestedDate">
+                  </div>
+                  <div class="form-group">
+                      <label for="quotationExpectedDate">Quotation Expected Date (YYYY/MM/DD)</label>
+                      <input type="date" id="quotationExpectedDate" name="quotationExpectedDate">
+                  </div>
+              </div>
+      
+              <!-- Section II: Technical Details -->
+              <div class="section">
+                  <h2>SECTION II: TECHNICAL DETAILS</h2>
+                  <div class="form-group">
+                      <label for="transformerType">Transformer Type</label>
+                      <select id="transformerType" name="transformerType">
+                          <option value="oil">Oil Type</option>
+                          <option value="dry">Dry Type</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="capacity">Capacity</label>
+                      <input type="text" id="capacity" name="capacity">
+                  </div>
+                  <div class="form-group">
+                      <label for="primaryVoltage">Primary Side Voltage</label>
+                      <input type="text" id="primaryVoltage" name="primaryVoltage">
+                  </div>
+                  <div class="form-group">
+                      <label for="secondaryVoltage">Secondary Side Voltage</label>
+                      <input type="text" id="secondaryVoltage" name="secondaryVoltage">
+                  </div>
+                  <div class="form-group">
+                      <label for="phases">Number of Phases</label>
+                      <input type="text" id="phases" name="phases">
+                  </div>
+                  <div class="form-group">
+                      <label for="vectorGroup">Vector Group</label>
+                      <input type="text" id="vectorGroup" name="vectorGroup">
+                  </div>
+                  <div class="form-group">
+                      <label for="orderQuantity">Order Quantity</label>
+                      <input type="text" id="orderQuantity" name="orderQuantity">
+                  </div>
+                  <div class="form-group">
+                      <label for="parallelConnection">Parallel Connection with Existing Transformer?</label>
+                      <select id="parallelConnection" name="parallelConnection">
+                          <option value="yes">Yes</option>
+                          <option value="no">No</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="impedance">If Yes, Impedance of Existing Transformer</label>
+                      <input type="text" id="impedance" name="impedance">
+                  </div>
+                  <div class="form-group">
+                      <label for="technicalSpec">Technical Specifications Attached?</label>
+                      <select id="technicalSpec" name="technicalSpec">
+                          <option value="yes">Yes</option>
+                          <option value="no">No</option>
+                      </select>
+                  </div>
+              </div>
+      
+              <!-- Section III: Accessories or Options -->
+              <div class="section">
+                  <h2>SECTION III: ACCESSORIES OR OPTIONS</h2>
+                  <h3>Oil Type Transformers Standard Features:</h3>
+                  <ul>
+                      <li>Hermetically sealed with corrugated tank design (for small and medium transformers)</li>
+                      <li>Conservator type design (for 3000kVA and above)</li>
+                      <li>Off circuit tap changer</li>
+                      <li>Pressure relief valve</li>
+                      <li>Drain valve</li>
+                      <li>Lifting lugs</li>
+                      <li>Earthing terminals</li>
+                      <li>Open bushings for HV and LV sides</li>
+                  </ul>
+                  <h3>Dry Type Transformers Standard Features:</h3>
+                  <ul>
+                      <li>Temperature monitoring unit</li>
+                      <li>3 Nos. of pt100 probes</li>
+                      <li>IP 21 rated enclosure</li>
+                  </ul>
+                  <div class="form-group">
+                      <label for="specialRequests">Special Requests</label>
+                      <textarea id="specialRequests" name="specialRequests"></textarea>
+                  </div>
+              </div>
+      
+              <!-- Section IV: Terms and Conditions -->
+              <div class="section">
+                  <h2>SECTION IV: TERMS AND CONDITIONS</h2>
+                  <p>The standard delivery time for transformers is 12-13 weeks. Please indicate below or reach out to our sales engineer if you require expedited delivery.</p>
+                  <p>The standard warranty period is 2 years from delivery or 1.5 years from installation and commissioning, whichever comes first. Please specify if you need an extended warranty, which can be provided for an additional charge.</p>
+                  <p>The following routine tests are conducted prior to the delivery of each oil type and dry type transformer:</p>
+                  <ul>
+                      <li>Ratio & Vector Group Test</li>
+                      <li>DC Resistance Test</li>
+                      <li>No Load Test</li>
+                      <li>Load Test</li>
+                      <li>Separate Source Voltage Withstand Test</li>
+                      <li>Induced Over Voltage Withstand Test</li>
+                      <li>Insulation Resistance Test</li>
+                      <li>Oil Dielectric Strength Test</li>
+                      <li>Tank Pressure Test</li>
+                  </ul>
+                  <h3>Optional Tests and Costs:</h3>
+                  <div class="form-group">
+                      <label><input type="checkbox" name="temperatureRiseTest"> Temperature rise test (600,000.00 LKR)</label>
+                  </div>
+                  <div class="form-group">
+                      <label><input type="checkbox" name="lightningImpulseTest"> Lightning impulse test (450,000.00 LKR)</label>
+                  </div>
+                  <div class="form-group">
+                      <label><input type="checkbox" name="partialDischargeTest"> Partial discharge test (300,000.00 LKR)</label>
+                  </div>
+                  <div class="form-group">
+                      <label><input type="checkbox" name="soundLevelTest"> Sound level test (200,000.00 LKR)</label>
+                  </div>
+                  <div class="form-group">
+                      <label><input type="checkbox" name="sweepFrequencyResponseAnalysis"> Sweep frequency response analysis (SFRA) (200,000.00 LKR)</label>
+                  </div>
+                  <div class="form-group">
+                      <label><input type="checkbox" name="tanDeltaTest"> Tan delta test (160,000.00 LKR)</label>
+                  </div>
+                  <div class="form-group">
+                      <label><input type="checkbox" name="polarizationIndex"> Polarization index (PI) (30,000.00 LKR)</label>
+                  </div>
+                  <div class="form-group">
+                      <label><input type="checkbox" name="ctTest"> CT test (100,000.00 LKR)</label>
+                  </div>
+                  <div class="form-group">
+                      <label for="deliveryTime">Expected Delivery Time in Weeks</label>
+                      <input type="text" id="deliveryTime" name="deliveryTime">
+                  </div>
+                  <div class="form-group">
+                      <label for="extendedWarranty">Any Extended Warranty Requirement (Specify)</label>
+                      <input type="text" id="extendedWarranty" name="extendedWarranty">
+                  </div>
+                  <div class="form-group">
+                      <label for="currency">Currency of Payment</label>
+                      <select id="currency" name="currency">
+                          <option value="LKR">LKR</option>
+                          <option value="USD">USD</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="taxExemption">Any Duty / Tax Exemption Facility for the Project</label>
+                      <input type="text" id="taxExemption" name="taxExemption">
+                  </div>
+              </div>
+      
+              <!-- Section V: For Official Use Only -->
+              <div class="section">
+                  <h2>SECTION V: FOR OFFICIAL USE ONLY</h2>
+                  <div class="form-group">
+                      <label for="specialInstructions">Any Special Instructions on Identified Requirement</label>
+                      <textarea id="specialInstructions" name="specialInstructions"></textarea>
+                  </div>
+                  <div class="form-group">
+                      <label for="testRequirements">Customer’s Test Requirement (Standard Routine Tests or Otherwise)</label>
+                      <textarea id="testRequirements" name="testRequirements"></textarea>
+                  </div>
+              </div>
+              
+              <!-- Submit Button -->
+              <div class="form-group">
+                  <button type="submit">Submit</button>
+              </div>
+          </form>
+      </body>
+      </html>
+      

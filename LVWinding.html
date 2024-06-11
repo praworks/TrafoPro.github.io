@@ -104,7 +104,7 @@
 
 
 
-    <!--Cooling-->
+      <!--Cooling-->
     </select>
     <label for="cooling-duct-1">Cooling Duct 1</label>
     <select id="cooling-duct-1">
@@ -128,7 +128,7 @@
       <option value="1/3 X 2">1/3 X 2</option>
     </select>
 
-<!-- sample data
+    <!-- sample data
      |------------------------------------------  L O W   V O L T A G E   W I N D I N G   -----------------------------------------|
      | Type of Coil......:   AL-Layer-Rect     | Coil-Length.......:          316.000 mm | Cond Mec/ELEC LGTH:  292.000 x  280.800 |
      | TURNS PER COIL....:       72.0          | Inside Dimensions.: 131.000 x188.732 mm | Cond Dim: Rad/Ax..:   4.500 x 11.500 mm |
@@ -144,91 +144,91 @@
      | Turn CSA .........:          50.892 mm2 |                                         | Conductor Dims....: Specified Size      |
      |----------------------------------------- H I G H   V O L T A G E   W I N D I N G   -----------------------------------------|
 -->
-  
-  <input type="text" id="lvTypeOfCoil" name="lvTypeOfCoil" value="AL-Layer-Rect"><br><br>
-  <label for="lvCoilLength">Coil Length:</label>
-  <input type="text" id="lvCoilLength" name="lvCoilLength" value="316.000 mm"><br><br>
-  <label for="lvTurnsPerCoil">Turns Per Coil:</label>
-  <input type="text" id="lvTurnsPerCoil" name="lvTurnsPerCoil" value="72.0"><br><br>
-  <label for="lvInsideDimensions">Inside Dimensions:</label>
-  <input type="text" id="lvInsideDimensions" name="lvInsideDimensions" value="131.000 x 188.732 mm"><br><br>
-  <label for="lvOutsideDimensions">Outside Dimensions:</label>
-  <input type="text" id="lvOutsideDimensions" name="lvOutsideDimensions" value="160.814 x 218.546 mm"><br><br>
-  <label for="lvInnerPerimeter">Inner Perimeter:</label>
-  <input type="text" id="lvInnerPerimeter" name="lvInnerPerimeter" value="526.0 mm"><br><br>
-  <label for="lvRadBlds">Radial Blades (H, Leg, L):</label>
-  <input type="text" id="lvRadBlds" name="lvRadBlds" value="14.91 / 14.91 / 14.91"><br><br>
-  <label for="lvLayTrnDucWts">Layer/Turn/Duct Weights:</label>
-  <input type="text" id="lvLayTrnDucWts" name="lvLayTrnDucWts" value="0.24 / 0.34 / 0.00"><br><br>
-  <label for="lvTotalInsulWeight">Total Insulation Weight:</label>
-  <input type="text" id="lvTotalInsulWeight" name="lvTotalInsulWeight" value="0.59 kg"><br><br>
-  <label for="lvTotalCoilWeight">Total Coil Weight:</label>
-  <input type="text" id="lvTotalCoilWeight" name="lvTotalCoilWeight" value="17.82 kg"><br><br>
-  <label for="lvResistance">Resistance (Coil):</label>
-  <input type="text" id="lvResistance" name="lvResistance" value="0.028058 @ 75 C"><br><br>
-  <label for="lvTurnCSA">Turn CSA:</label>
-  <input type="text" id="lvTurnCSA" name="lvTurnCSA" value="50.892 mm2"><br><br>
-  <label for="lvWattsPerSqM">Watts/sq m:</label>
-  <input type="text" id="lvWattsPerSqM" name="lvWattsPerSqM" value="529.788"><br><br>
-  <label for="lvTurnRISE">Turn RISE/GRADIENT:</label>
-  <input type="text" id="lvTurnRISE" name="lvTurnRISE" value="26.0 / 9.9 deg C"><br><br>
-  <label for="lvNumSupportSticks">Number of Support Sticks:</label>
-  <input type="text" id="lvNumSupportSticks" name="lvNumSupportSticks" value="12"><br><br>
-  <label for="lvShortCircuitCurr">Short-Circuit Current:</label>
-  <input type="text" id="lvShortCircuitCurr" name="lvShortCircuitCurr" value="3150 Amp."><br><br>
-  <label for="lvMeanTurnLength">Mean Turn Length:</label>
-  <input type="text" id="lvMeanTurnLength" name="lvMeanTurnLength" value="572.845 mm"><br><br>
-  <label for="lvMaxTurnLengthBuckl">Max Turn Length Buckling:</label>
-  <input type="text" id="lvMaxTurnLengthBuckl" name="lvMaxTurnLengthBuckl" value="4834.992 mm"><br><br>
-  <label for="lvLayMaxMinTpl">Layer Max/Min tpl:</label>
-  <input type="text" id="lvLayMaxMinTpl" name="lvLayMaxMinTpl" value="3 : 24.0 / 24.0"><br><br>
-  <label for="lvBusBar">Bus Bar:</label>
-  <input type="text" id="lvBusBar" name="lvBusBar" value="25.000 / 3.000 mm"><br><br>
-  <label for="lvLayerTurnInsBd">Layer/Turn Insulation Board:</label>
-  <input type="text" id="lvLayerTurnInsBd" name="lvLayerTurnInsBd" value="0.180 / 0.200 mm"><br><br>
-  <label for="lvNoStrsRadAx">Number of Strands (Rad x Ax):</label>
-  <input type="text" id="lvNoStrsRadAx" name="lvNoStrsRadAx" value="1 x 1"><br><br>
-  <label for="lvResistance">Resistance (Coil):</label>
-  <input type="text" id="lvResistance" name="lvResistance" value="0.028058 @ 75 C"><br><br>
-  <label for="lvConductorDims">Conductor Dimensions:</label>
-  <input type="text" id="lvConductorDims" name="lvConductorDims" value="Specified Size"><br><br>
-  <label for="lvEffNoCoolDucts">Effective Number of Cooling Ducts:</label>
-  <input type="text" id="lvEffNoCoolDucts" name="lvEffNoCoolDucts" value="HV: 0 Leg: 0 LV: 0"><br><br>
-  <label for="lvAxialAllowance">Axial Allowance:</label>
-  <input type="text" id="lvAxialAllowance" name="lvAxialAllowance" value="0.000 mm"><br><br>
-  <label for="lvTotalInsulWeight">Total Insulation Weight:</label>
-  <input type="text" id="lvTotalInsulWeight" name="lvTotalInsulWeight" value="0.59 kg"><br><br>
-  <label for="lvTotalCoilWeight">Total Coil Weight:</label>
-  <input type="text" id="lvTotalCoilWeight" name="lvTotalCoilWeight" value="17.82 kg"><br><br>
-  <label for="lvResistance">Resistance (Coil):</label>
-  <input type="text" id="lvResistance" name="lvResistance" value="0.028058 @ 75 C"><br><br>
-  <label for="lvTurnCSA">Turn CSA:</label>
-  <input type="text" id="lvTurnCSA" name="lvTurnCSA" value="50.892 mm2"><br><br>
-  <label for="lvWattsPerSqM">Watts/sq m:</label>
-  <input type="text" id="lvWattsPerSqM" name="lvWattsPerSqM" value="529.788"><br><br>
-  <label for="lvTurnRISE">Turn RISE/GRADIENT:</label>
-  <input type="text" id="lvTurnRISE" name="lvTurnRISE" value="26.0 / 9.9 deg C"><br><br>
-  <label for="lvNumSupportSticks">Number of Support Sticks:</label>
-  <input type="text" id="lvNumSupportSticks" name="lvNumSupportSticks" value="12"><br><br>
-  <label for="lvShortCircuitCurr">Short-Circuit Current:</label>
-  <input type="text" id="lvShortCircuitCurr" name="lvShortCircuitCurr" value="3150 Amp."><br><br>
-  <label for="lvMeanTurnLength">Mean Turn Length:</label>
-  <input type="text" id="lvMeanTurnLength" name="lvMeanTurnLength" value="572.845 mm"><br><br>
-  <label for="lvMaxTurnLengthBuckl">Max Turn Length Buckling:</label>
-  <input type="text" id="lvMaxTurnLengthBuckl" name="lvMaxTurnLengthBuckl" value="4834.992 mm"><br><br>
-  <label for="lvLayMaxMinTpl">Layer Max/Min tpl:</label>
-  <input type="text" id="lvLayMaxMinTpl" name="lvLayMaxMinTpl" value="3 : 24.0 / 24.0"><br><br>
-  <label for="lvBusBar">Bus Bar:</label>
-  <input type="text" id="lvBusBar" name="lvBusBar" value="25.000 / 3.000 mm"><br><br>
-  <label for="lvLayerTurnInsBd">Layer/Turn Insulation Board:</label>
-  <input type="text" id="lvLayerTurnInsBd" name="lvLayerTurnInsBd" value="0.180 / 0.200 mm"><br><br>
-  <label for="lvNoStrsRadAx">Number of Strands (Rad x Ax):</label>
-  <input type="text" id="lvNoStrsRadAx" name="lvNoStrsRadAx" value="1 x 1"><br><br>
-  <label for="lvResistance">Resistance (Coil):</label>
-  <input type="text" id="lvResistance" name="lvResistance" value="0.028058 @ 75 C"><br><br>
-  <label for="lvConductorDims">Conductor Dimensions:</label>
-  <input type="text" id="lvConductorDims" name="lvConductorDims" value="Specified Size"><br><br>
-  <label for="lvEffNoCoolDucts">Effective Number of Cooling Ducts:</label>
+
+    <input type="text" id="lvTypeOfCoil" name="lvTypeOfCoil" value="AL-Layer-Rect"><br><br>
+    <label for="lvCoilLength">Coil Length:</label>
+    <input type="text" id="lvCoilLength" name="lvCoilLength" value="316.000 mm"><br><br>
+    <label for="lvTurnsPerCoil">Turns Per Coil:</label>
+    <input type="text" id="lvTurnsPerCoil" name="lvTurnsPerCoil" value="72.0"><br><br>
+    <label for="lvInsideDimensions">Inside Dimensions:</label>
+    <input type="text" id="lvInsideDimensions" name="lvInsideDimensions" value="131.000 x 188.732 mm"><br><br>
+    <label for="lvOutsideDimensions">Outside Dimensions:</label>
+    <input type="text" id="lvOutsideDimensions" name="lvOutsideDimensions" value="160.814 x 218.546 mm"><br><br>
+    <label for="lvInnerPerimeter">Inner Perimeter:</label>
+    <input type="text" id="lvInnerPerimeter" name="lvInnerPerimeter" value="526.0 mm"><br><br>
+    <label for="lvRadBlds">Radial Blades (H, Leg, L):</label>
+    <input type="text" id="lvRadBlds" name="lvRadBlds" value="14.91 / 14.91 / 14.91"><br><br>
+    <label for="lvLayTrnDucWts">Layer/Turn/Duct Weights:</label>
+    <input type="text" id="lvLayTrnDucWts" name="lvLayTrnDucWts" value="0.24 / 0.34 / 0.00"><br><br>
+    <label for="lvTotalInsulWeight">Total Insulation Weight:</label>
+    <input type="text" id="lvTotalInsulWeight" name="lvTotalInsulWeight" value="0.59 kg"><br><br>
+    <label for="lvTotalCoilWeight">Total Coil Weight:</label>
+    <input type="text" id="lvTotalCoilWeight" name="lvTotalCoilWeight" value="17.82 kg"><br><br>
+    <label for="lvResistance">Resistance (Coil):</label>
+    <input type="text" id="lvResistance" name="lvResistance" value="0.028058 @ 75 C"><br><br>
+    <label for="lvTurnCSA">Turn CSA:</label>
+    <input type="text" id="lvTurnCSA" name="lvTurnCSA" value="50.892 mm2"><br><br>
+    <label for="lvWattsPerSqM">Watts/sq m:</label>
+    <input type="text" id="lvWattsPerSqM" name="lvWattsPerSqM" value="529.788"><br><br>
+    <label for="lvTurnRISE">Turn RISE/GRADIENT:</label>
+    <input type="text" id="lvTurnRISE" name="lvTurnRISE" value="26.0 / 9.9 deg C"><br><br>
+    <label for="lvNumSupportSticks">Number of Support Sticks:</label>
+    <input type="text" id="lvNumSupportSticks" name="lvNumSupportSticks" value="12"><br><br>
+    <label for="lvShortCircuitCurr">Short-Circuit Current:</label>
+    <input type="text" id="lvShortCircuitCurr" name="lvShortCircuitCurr" value="3150 Amp."><br><br>
+    <label for="lvMeanTurnLength">Mean Turn Length:</label>
+    <input type="text" id="lvMeanTurnLength" name="lvMeanTurnLength" value="572.845 mm"><br><br>
+    <label for="lvMaxTurnLengthBuckl">Max Turn Length Buckling:</label>
+    <input type="text" id="lvMaxTurnLengthBuckl" name="lvMaxTurnLengthBuckl" value="4834.992 mm"><br><br>
+    <label for="lvLayMaxMinTpl">Layer Max/Min tpl:</label>
+    <input type="text" id="lvLayMaxMinTpl" name="lvLayMaxMinTpl" value="3 : 24.0 / 24.0"><br><br>
+    <label for="lvBusBar">Bus Bar:</label>
+    <input type="text" id="lvBusBar" name="lvBusBar" value="25.000 / 3.000 mm"><br><br>
+    <label for="lvLayerTurnInsBd">Layer/Turn Insulation Board:</label>
+    <input type="text" id="lvLayerTurnInsBd" name="lvLayerTurnInsBd" value="0.180 / 0.200 mm"><br><br>
+    <label for="lvNoStrsRadAx">Number of Strands (Rad x Ax):</label>
+    <input type="text" id="lvNoStrsRadAx" name="lvNoStrsRadAx" value="1 x 1"><br><br>
+    <label for="lvResistance">Resistance (Coil):</label>
+    <input type="text" id="lvResistance" name="lvResistance" value="0.028058 @ 75 C"><br><br>
+    <label for="lvConductorDims">Conductor Dimensions:</label>
+    <input type="text" id="lvConductorDims" name="lvConductorDims" value="Specified Size"><br><br>
+    <label for="lvEffNoCoolDucts">Effective Number of Cooling Ducts:</label>
+    <input type="text" id="lvEffNoCoolDucts" name="lvEffNoCoolDucts" value="HV: 0 Leg: 0 LV: 0"><br><br>
+    <label for="lvAxialAllowance">Axial Allowance:</label>
+    <input type="text" id="lvAxialAllowance" name="lvAxialAllowance" value="0.000 mm"><br><br>
+    <label for="lvTotalInsulWeight">Total Insulation Weight:</label>
+    <input type="text" id="lvTotalInsulWeight" name="lvTotalInsulWeight" value="0.59 kg"><br><br>
+    <label for="lvTotalCoilWeight">Total Coil Weight:</label>
+    <input type="text" id="lvTotalCoilWeight" name="lvTotalCoilWeight" value="17.82 kg"><br><br>
+    <label for="lvResistance">Resistance (Coil):</label>
+    <input type="text" id="lvResistance" name="lvResistance" value="0.028058 @ 75 C"><br><br>
+    <label for="lvTurnCSA">Turn CSA:</label>
+    <input type="text" id="lvTurnCSA" name="lvTurnCSA" value="50.892 mm2"><br><br>
+    <label for="lvWattsPerSqM">Watts/sq m:</label>
+    <input type="text" id="lvWattsPerSqM" name="lvWattsPerSqM" value="529.788"><br><br>
+    <label for="lvTurnRISE">Turn RISE/GRADIENT:</label>
+    <input type="text" id="lvTurnRISE" name="lvTurnRISE" value="26.0 / 9.9 deg C"><br><br>
+    <label for="lvNumSupportSticks">Number of Support Sticks:</label>
+    <input type="text" id="lvNumSupportSticks" name="lvNumSupportSticks" value="12"><br><br>
+    <label for="lvShortCircuitCurr">Short-Circuit Current:</label>
+    <input type="text" id="lvShortCircuitCurr" name="lvShortCircuitCurr" value="3150 Amp."><br><br>
+    <label for="lvMeanTurnLength">Mean Turn Length:</label>
+    <input type="text" id="lvMeanTurnLength" name="lvMeanTurnLength" value="572.845 mm"><br><br>
+    <label for="lvMaxTurnLengthBuckl">Max Turn Length Buckling:</label>
+    <input type="text" id="lvMaxTurnLengthBuckl" name="lvMaxTurnLengthBuckl" value="4834.992 mm"><br><br>
+    <label for="lvLayMaxMinTpl">Layer Max/Min tpl:</label>
+    <input type="text" id="lvLayMaxMinTpl" name="lvLayMaxMinTpl" value="3 : 24.0 / 24.0"><br><br>
+    <label for="lvBusBar">Bus Bar:</label>
+    <input type="text" id="lvBusBar" name="lvBusBar" value="25.000 / 3.000 mm"><br><br>
+    <label for="lvLayerTurnInsBd">Layer/Turn Insulation Board:</label>
+    <input type="text" id="lvLayerTurnInsBd" name="lvLayerTurnInsBd" value="0.180 / 0.200 mm"><br><br>
+    <label for="lvNoStrsRadAx">Number of Strands (Rad x Ax):</label>
+    <input type="text" id="lvNoStrsRadAx" name="lvNoStrsRadAx" value="1 x 1"><br><br>
+    <label for="lvResistance">Resistance (Coil):</label>
+    <input type="text" id="lvResistance" name="lvResistance" value="0.028058 @ 75 C"><br><br>
+    <label for="lvConductorDims">Conductor Dimensions:</label>
+    <input type="text" id="lvConductorDims" name="lvConductorDims" value="Specified Size"><br><br>
+    <label for="lvEffNoCoolDucts">Effective Number of Cooling Ducts:</label>
   </div>
 </body>
 

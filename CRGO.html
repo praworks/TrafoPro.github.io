@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="Home.css">
-    <script src="sidebar.js"></script>
-    <script src="setSessionID.js"></script>
-    <script src="MaterialData.js"></script>
-</head>
-<body>
-    <div include-html="sidebar.html"></div>
-    <div class="content">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="Home.css">
+  <script src="sidebar.js"></script>
+  <script src="setSessionID.js"></script>
+  <script src="MaterialData.js"></script>
+</head>
+
+<body>
+  <div include-html="sidebar.html"></div>
+  <div class="content">
     <div class="form-group">
-      <p id="session-id" style="color: blue;">Your session ID will appear here</p>
+      <p id="session-id" style="color: blue">Your session ID will appear here</p>
       <label for="coreMaterial">Select Core Material:</label>
       <select id="coreMaterial" name="coreMaterial">
         <option value="0" coreSheetThk="0.01">Calculate W/O specific material</option>
@@ -22,20 +23,10 @@
         <option value="27" coreSheetThk="0.27">27</option>
       </select>
     </div>
-
     <div class="form-group">
       <label for="stepCount">Select Steps Count:</label>
-      <select id="stepCount" onchange="updateStepOptions()">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
+      <input type="text" id="stepCount">
+
       </select>
     </div>
     <div id="stepOptions" class="form-group step-widths"></div>
@@ -48,20 +39,17 @@
         <option value="Rectangle">Rectangle</option>
       </select>
     </div>
-
     <div class="form-group">
       <label for="centerToCenter">Center to Center (mm):</label>
-      <input type="number" id="centerToCenter" placeholder="Enter center to center distance">
+      <input type="text" id="centerToCenter">
     </div>
     <div class="form-group">
       <label for="windowHeight">Window Height (mm):</label>
-      <input type="number" id="windowHeight" placeholder="Enter window height">
+      <input type="text" id="windowHeight">
     </div>
-
-
     <div class="form-group">
       <label for="coreRequiredArea">Core Required Area (mm²):</label>
-      <input type="text" id="coreRequiredArea" placeholder="Enter core required area">
+      <input type="text" id="coreRequiredArea">
     </div>
     <div class="form-group">
       <label for="minGapCoreToLead">Min Gap From Core To Lead:</label>
@@ -70,52 +58,115 @@
     <div class="form-group">
       <label for="leadSize">Select Lead Size:</label>
       <select id="leadSize">
-        <option value="25x3" lead_width="25" lead_thick="3">25x3</option>
-        <option value="25x4" lead_width="25" lead_thick="4">25x4</option>
-        <option value="40x4" lead_width="40" lead_thick="4">40x4</option>
-        <option value="50x6" lead_width="50" lead_thick="6">50x6</option>
-        <option value="120x10" lead_width="120" lead_thick="10">120x10</option>
       </select>
     </div>
-
-    <label for="leadSize">Select Lead Size:</label>
-    <select id="leadSize" onclick="listBusbarOptions()">
-      <option value="">Lead Size</option>
-    </select>
-
-    <script>
-      function listBusbarOptions() {
-        const materialSelect = document.getElementById('material');
-        materialSelect.innerHTML = '<option value="">Lead Size</option>';
-  
-        if (materialType && materialShape) {
-          MaterialData.forEach(material => {
-            if (material.type.includes(materialType) && material.type.includes(materialShape)) {
-              const option = document.createElement('option');
-              option.value = material.id;
-              option.textContent = `${material.id} - ${material.dimensions}`;
-              materialSelect.appendChild(option);
-            }
-          });
-        }
-      }
-    </script>
-
     <button onclick="calculateThickness()">Calculate Thickness</button>
     <div id="results"></div>
-
-    <img src="coreDwg.png" alt="">
-
-
-    <tbody id="calculationResults">
-
-    </tbody>
+    <img src="coreDwg.png" alt="Core Drawing">
+    <table>
+      <tbody id="calculationResults"></tbody>
     </table>
   </div>
-
   <script src="calculateThickness.js"></script>
   <script src="updateStepOptions.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var centerToCenterValue = Math.ceil(parseFloat(sessionStorage.getItem("s2-center-to-center")));
+      document.getElementById("centerToCenter").value = centerToCenterValue;
 
+      var windowHeightValue = sessionStorage.getItem("s2-window-height");
+      document.getElementById("windowHeight").value = windowHeightValue;
+
+      var coreRequiredAreaValue = sessionStorage.getItem("s2-gross-csa") * 100;
+      document.getElementById("coreRequiredArea").value = coreRequiredAreaValue;
+
+      var step1Width = Math.ceil(parseFloat(sessionStorage.getItem("s2-step1-width")));
+      var step2Width = Math.ceil(parseFloat(sessionStorage.getItem("s2-step2-width")));
+      var step3Width = Math.ceil(parseFloat(sessionStorage.getItem("s2-step3-width")));
+      var step4Width = Math.ceil(parseFloat(sessionStorage.getItem("s2-step4-width")));
+      var step5Width = Math.ceil(parseFloat(sessionStorage.getItem("s2-step5-width")));
+      var step6Width = Math.ceil(parseFloat(sessionStorage.getItem("s2-step6-width")));
+      var step7Width = Math.ceil(parseFloat(sessionStorage.getItem("s2-step7-width")));
+      var step8Width = Math.ceil(parseFloat(sessionStorage.getItem("s2-step8-width")));
+      var step9Width = Math.ceil(parseFloat(sessionStorage.getItem("s2-step9-width")));
+
+      document.getElementById("stepOptions").innerHTML = `
+        <label for="step1Width">Step 1 Width (mm):</label>
+        <input type="text" id="step1Width" value="${step1Width}">
+        <label for="step2Width">Step 2 Width (mm):</label>
+        <input type="text" id="step2Width" value="${step2Width}">
+        <label for="step3Width">Step 3 Width (mm):</label>
+        <input type="text" id="step3Width" value="${step3Width}">
+        <label for="step4Width">Step 4 Width (mm):</label>
+        <input type="text" id="step4Width" value="${step4Width}">
+        <label for="step5Width">Step 5 Width (mm):</label>
+        <input type="text" id="step5Width" value="${step5Width}">
+        <label for="step6Width">Step 6 Width (mm):</label>
+        <input type="text" id="step6Width" value="${step6Width}">
+        <label for="step7Width">Step 7 Width (mm):</label>
+        <input type="text" id="step7Width" value="${step7Width}">
+        <label for="step8Width">Step 8 Width (mm):</label>
+        <input type="text" id="step8Width" value="${step8Width}">
+        <label for="step9Width">Step 9 Width (mm):</label>
+        <input type="text" id="step9Width" value="${step9Width}">
+      `;
+
+      // find step count is step1Width is not 0 count 1
+      var stepCount = 0;
+      if (step1Width != 0) {
+        stepCount++;
+      }
+      if (step2Width != 0) {
+        stepCount++;
+      }
+      if (step3Width != 0) {
+        stepCount++;
+      }
+      if (step4Width != 0) {
+        stepCount++;
+      }
+      if (step5Width != 0) {
+        stepCount++;
+      }
+      if (step6Width != 0) {
+        stepCount++;
+      }
+      if (step7Width != 0) {
+        stepCount++;
+      }
+      if (step8Width != 0) {
+        stepCount++;
+      }
+      if (step9Width != 0) {
+        stepCount++;
+      }
+      // ste stepcount to id="stepCount">
+      document.getElementById("stepCount").value = stepCount;
+
+      // Assuming the string format is "11.700 /  4.700 mm"
+      var leadString = sessionStorage.getItem("s3-LeadWxT");
+
+      // Extract the width and thickness values
+      var parts = leadString.split("/");
+      var lead_width = parts[0].trim(); // "11.700"
+      var lead_thick = parts[1].replace("mm", "").trim(); // "4.700"
+
+      console.log(lead_width); // "11.700"
+      console.log(lead_thick); // "4.700"
+
+      // Create a new option for the lead size
+      var leadSizeOption = document.createElement("option");
+      leadSizeOption.value = `${lead_width}x${lead_thick}`;
+      leadSizeOption.text = `${lead_width} x ${lead_thick}`;
+
+      // Append the new option to the select element
+      var leadSizeSelect = document.getElementById("leadSize");
+      leadSizeSelect.appendChild(leadSizeOption);
+
+      // Set the lead size value
+      leadSizeSelect.value = `${lead_width}x${lead_thick}`;
+    });
+  </script>
 </body>
 
 </html>
